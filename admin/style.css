@@ -1,0 +1,966 @@
+/*
+Theme Name: iM
+Theme URI: TBD
+Description: Website for Josh Montoya
+Author: Josh Montoya
+
+License:
+License URI:
+*/
+
+/* 
+    CSS Reset - Credits Eric Meyer - Thank you dude!
+    http://meyerweb.com/eric/tools/css/reset/ 
+    v2.0 | 20110126
+    License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+    font-family: 'Open Sans', sans-serif;
+    background: #98dcff; /* Old browsers */
+    background: -moz-linear-gradient(-45deg,  #98dcff 0%, #ffffff 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#98dcff), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(-45deg,  #98dcff 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(-45deg,  #98dcff 0%,#ffffff 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(-45deg,  #98dcff 0%,#ffffff 100%); /* IE10+ */
+    background: linear-gradient(-45deg,  #98dcff 0%,#ffffff 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#98dcff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+html, body {height: 100%;overflow-x: hidden;}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #004e79;
+}
+
+a:hover  {
+    text-decoration: underline;
+}
+
+.noSelect {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+/* End Reset */
+
+.wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: url('images/shibuiLogo.png') no-repeat .5% 99%;
+    z-index: 100;
+}
+
+nav {
+    width: 100%;
+    margin: 0 auto;
+    height: 1.4em;
+    padding: .4em 0;
+    background: #494949;
+    border-bottom: 3px solid #292929;
+    position: relative;
+    
+}
+
+nav ul {
+    margin: auto 0;
+    height: 100%;
+}
+
+nav ul li {
+    float: left;
+    color: white;
+    margin: auto 1em;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+nav ul li:last-of-type {
+    float: right;
+    margin: auto 2em;
+}
+
+nav ul li:nth-last-of-type(2) {
+	float: right;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.content {
+    height: auto;
+    background: #494949;
+    margin: 40px auto 0 auto;
+    border: 3px solid #292929;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px; 
+    width: 30em;
+    padding: 2em;
+}
+
+.content h1, .content h2, .content h3, .content p {
+    color: #fff;
+}
+
+.content h1 {
+    font-size: 1.4em;
+    font-weight: 700;
+}
+
+.content h2 {
+    font-size: .8em;
+}
+
+.content p {
+    margin: 12px 0 0 0;
+}
+
+.post {
+    padding: 1em;
+    border-top: 3px dashed #292929;
+    height: 6em;
+}
+
+.page {
+    padding: 1em;
+    height: auto;
+}
+
+.post:first-of-type {
+    border-top: none;
+}
+
+.mceEditor {
+    float: right;
+    margin: 0 0 52px 0;
+}
+
+.transition {
+    -webkit-transition: all .4s linear;
+    -moz-transition: all .4s linear;
+    -o-transition: all .4s linear;
+    -ms-transition: all .4s linear;
+    transition: all .4s linear;
+}
+
+.easeTransition {
+    -webkit-transition: all .4s ease-out;
+    -moz-transition: all .4s ease-out;
+    -o-transition: all .4s ease-out;
+    -ms-transition: all .4s ease-out;
+    transition: all .4s ease-out;
+}
+
+.quickTransition {
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    transition: all .2s linear;
+}
+
+.slowTransition {
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+	-ms-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+}
+
+.fade {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0;
+}
+
+.hiddenContainer {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0;
+    z-index: 1 !important;
+}
+
+.partialFade {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+    filter: alpha(opacity=60);
+    -moz-opacity: .6;
+    -khtml-opacity: .6;
+    opacity: .6;
+}
+
+form {
+    width: 100%;
+    //height: 430px;
+    position: relative;
+}
+
+form label {
+    float: left;
+    color: #fff;
+    font-size: 1.1em;
+    padding: 11px 0;
+    font-weight: 600;
+    margin: 4px 0;
+}
+
+form input, form textarea {
+    float: right;
+    width: 85%;
+    border: 3px solid #fff;
+    padding: 0;
+    margin: 4px 0;
+    padding: 8px;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+form input {
+    height: 18px;
+}
+
+form textArea {
+    height: 222px;
+    resize: none;
+}
+
+form input:hover, form textarea:hover, form input:focus, form textarea:focus {
+    border: 3px solid #93D141;
+}
+
+br {
+    clear: both;
+}
+
+form .btnDiv {
+    background: #494949;
+    border: 3px solid #292929;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.2em;
+    padding: 8px;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px; 
+    cursor: pointer;
+}
+
+form .btnDiv:hover {
+    background: #292929;
+}
+
+#editListUL li {
+    background: #f3f3f3;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    border: 3px solid #f3f3f3;
+    padding: 6px;
+    margin: 8px 0;
+    font-weight: 600;
+}
+
+#editListUL li:hover {
+    background: #e5e5e5;
+}
+
+.statusContainer {
+    height: 88px;
+    width: 88px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    background: #494949;
+    border: 3px solid #292929;
+    position: absolute;
+    top: 51px;
+    left: 14px;
+    z-index: 11000;
+}
+
+.statusContainer .progress, .statusContainer .success {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.statusContainer .progress h2, .statusContainer .success h2, .statusContainer .failure h2 {
+    font-weight: 600;
+    font-size: .9em;
+    width: 100%;
+    position: absolute;
+    bottom: 6px;
+    left: 0;
+    text-align: center;
+    color: #fff;
+    z-index: 100;
+}
+
+.statusContainer .progress .outerCircle {
+    height: 60px;
+    width: 60px;
+    position: relative;
+    margin: 0 auto;
+    -webkit-animation-name: progressSpinner;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: forward;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: progressSpinner;
+    -moz-animation-duration: 2s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-direction: forward;
+    -moz-animation-timing-function: linear;
+    z-index: 99;
+}
+
+.statusContainer .progress .outerCircle div {
+    height: 26px;
+    width: 26px;
+    position: absolute;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+
+.statusContainer .progress .outerCircle .topLeftCorner {
+    top: 4px;
+    left: 4px;
+    border-top: 4px solid #fff; 
+    border-left: 4px solid #fff;    
+}
+
+.statusContainer .progress .outerCircle .topRightCorner {
+    top: 4px;
+    right: 4px;
+    border-top: 4px solid #fff; 
+    border-right: 4px solid #fff;   
+}
+
+.statusContainer .progress .outerCircle .bottomRightCorner {
+    bottom: 4px;
+    right: 4px;
+    border-bottom: 4px solid #fff;  
+    border-right: 4px solid #fff;   
+}
+
+.statusContainer .progress .outerCircle .bottomLeftCorner {
+    bottom: 4px;
+    left: 4px;
+    border-bottom: 4px solid #fff;  
+    border-left: 4px solid #fff;    
+}
+
+.statusContainer .progress .outerCircle .top {
+    top: 6px;
+    right: 18px;
+    border-top: 4px solid #8ac53e;  
+}
+
+.statusContainer .progress .outerCircle .right {
+    top: 16px;
+    right: 6px;
+    border-right: 4px solid #8ac53e;    
+}
+
+.statusContainer .progress .outerCircle .bottom {
+    bottom: 6px;
+    right: 18px;
+    border-bottom: 4px solid #8ac53e;   
+}
+
+.statusContainer .progress .outerCircle .left {
+    top: 16px;
+    left: 6px;
+    border-left: 4px solid #8ac53e; 
+}
+
+.statusContainer .success .outerCircle {
+    height: 44px;
+    width: 44px;
+    background: #8ac53e;
+    margin: 14px auto 0 auto;
+    position: relative;
+    -webkit-border-radius: 44px;
+    -moz-border-radius: 44px;
+    border-radius: 44px;
+}
+
+.statusContainer .success .outerCircle .check {
+    height: 20px;
+    width: 36px;
+    border-bottom: 8px solid white;
+    border-left: 8px solid white;
+    -moz-transform: rotate(300deg);
+    -webkit-transform: rotate(300deg);
+    position: absolute;
+    top: 0px;
+    left: 2px;
+}
+
+.statusContainer .failure .outerCircle {
+    height: 44px;
+    width: 44px;
+    background: #c00;
+    margin: 14px auto 0 auto;
+    position: relative;
+    -webkit-border-radius: 44px;
+    -moz-border-radius: 44px;
+    border-radius: 44px;
+}
+
+.statusContainer .failure .outerCircle p {
+    text-align: center;
+    font-weight: 700;
+    color: white;
+    font-size: 2em;
+    padding: 4px 0;
+}
+
+/*Animations*/
+@-webkit-keyframes progressSpinner{
+    0% {-webkit-transform: rotate(0deg);}
+    25% {-webkit-transform: rotate(90deg);}
+    50% {-webkit-transform: rotate(180deg);}
+    75% {-webkit-transform: rotate(270deg);}
+    100% {-webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes progressSpinner{
+    0% {-moz-transform: rotate(0deg);}
+    25% {-moz-transform: rotate(90deg);}
+    50% {-moz-transform: rotate(180deg);}
+    75% {-moz-transform: rotate(270deg);}
+    100% {-moz-transform: rotate(360deg);}
+}
+
+@-webkit-keyframes gearRotateOut {
+    0% {-moz-transform: rotate(0deg);-webkit-transform: rotate(0deg);}
+    25% {-moz-transform: rotate(90deg);-webkit-transform: rotate(90deg);}
+    50% {-moz-transform: rotate(180deg);-webkit-transform: rotate(180deg);}
+    75% {-moz-transform: rotate(270deg);-webkit-transform: rotate(270deg);}
+    100% {-moz-transform: rotate(360deg);-webkit-transform: rotate(360deg);}
+}
+
+@-webkit-keyframes gearRotateIn {
+    0% {-moz-transform: rotate(360deg);-webkit-transform: rotate(360deg);}
+    25% {-moz-transform: rotate(270deg);-webkit-transform: rotate(270deg);}
+    50% {-moz-transform: rotate(180deg);-webkit-transform: rotate(180deg);}
+    75% {-moz-transform: rotate(90deg);-webkit-transform: rotate(90deg);}
+    100% {-moz-transform: rotate(0deg);-webkit-transform: rotate(0deg);}
+}
+
+@-moz-keyframes gearRotateOut {
+    0% {-moz-transform: rotate(0deg);}
+    25% {-moz-transform: rotate(90deg);}
+    50% {-moz-transform: rotate(180deg);}
+    75% {-moz-transform: rotate(270deg);}
+    100% {-moz-transform: rotate(360deg);}
+}
+
+@-moz-keyframes gearRotateIn {
+    0% {-moz-transform: rotate(360deg);}
+    25% {-moz-transform: rotate(270deg);}
+    50% {-moz-transform: rotate(180deg);}
+    75% {-moz-transform: rotate(90deg);}
+    100% {-moz-transform: rotate(0deg);}
+}
+
+@-webkit-keyframes barrelRoll {
+    0% {-webkit-transform: rotate(0deg);}
+    25% {-webkit-transform: rotate(90deg);}
+    50% {-webkit-transform: rotate(180deg);}
+    75% {-webkit-transform: rotate(270deg);}
+    100% {-webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes barrelRoll {
+    0% {-moz-transform: rotate(0deg);}
+    25% {-moz-transform: rotate(90deg);}
+    50% {-moz-transform: rotate(180deg);}
+    75% {-moz-transform: rotate(270deg);}
+    100% {-moz-transform: rotate(360deg);}
+}
+
+/*Settings*/
+.settingsPullOut {
+    position: absolute;
+    top: 38px;
+    right: 0;
+}
+
+.settings {
+	background: #494949;
+	border: 3px solid #292929;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	width: 220px;
+	height: 360px;
+	position: absolute;
+	top: 42px;
+	left: 0;
+	margin: 0;
+}
+
+.settingsExpanded {
+	margin-left: -214px;
+}
+
+.gear {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+   	top: 0;
+   	right: -18px;
+   	background: url('images/gear.png') no-repeat;
+}
+
+.gearRotateOut {
+	-webkit-animation-name: gearRotateOut;
+	-webkit-animation-duration: 900ms;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay: 40ms;
+	-moz-animation-name: gearRotateOut;
+	-moz-animation-duration: 900ms;
+	-moz-animation-iteration-count: 1;
+	-moz-animation-timing-function: linear;
+	-moz-animation-delay: 40ms;
+}
+
+.gearRotateIn {
+	-webkit-animation-name: gearRotateIn;
+	-webkit-animation-duration: 900ms;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay: 40ms;
+	-moz-animation-name: gearRotateIn;
+	-moz-animation-duration: 900ms;
+	-moz-animation-iteration-count: 1;
+	-moz-animation-timing-function: linear;
+	-moz-animation-delay: 40ms;
+}
+
+.settingsPullOut .gear .innerCircle {
+    height: 16px;
+    width: 16px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+    background: 0;
+    position: absolute;
+    z-index: 50;
+	border: 12px solid #828282;
+	box-shadow: inset 0 0 0 3px #494949;
+}
+
+.settingsPullOut .gear .nub {
+    border-top: 2px solid #494949;
+    border-left: 2px solid #494949;
+    border-right: 2px solid #494949;
+    height: 14px;
+    width: 13px;
+    background: #828282;
+    position: absolute;
+    -moz-border-radius-topleft: 8px;
+    -moz-border-radius-topright: 8px;
+    -moz-border-radius-bottomright: 0px;
+    -moz-border-radius-bottomleft: 0px;
+    -webkit-border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0px 0px;
+    z-index: 40;
+}
+
+.settingsPullOut .gear .one {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    top: -9px;
+    left: 13px;
+}
+
+.settingsPullOut .gear .two {
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    top: -2px;
+    right: -5px;
+}
+
+.settingsPullOut .gear .three {
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    top: 13px;
+    right: -10px;
+}
+
+.settingsPullOut .gear .four {
+    -moz-transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    bottom: -3px;
+    right: -4px;
+}
+
+.settingsPullOut .gear .five {
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    bottom: -9px;
+    left: 13px;
+}
+
+.settingsPullOut .gear .six {
+    -moz-transform: rotate(225deg);
+    -webkit-transform: rotate(225deg);
+    bottom: -3px;
+    left: -2px;
+}
+
+.settingsPullOut .gear .seven {
+    -moz-transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    top: 13px;
+    left: -9px;
+}
+
+.settingsPullOut .gear .eight {
+    -moz-transform: rotate(315deg);
+    -webkit-transform: rotate(315deg);
+    top: -2px;
+    left: -2px;
+}
+
+.pwInput {
+	width: 95%;
+	border: 3px solid #fff;
+	padding: 0;
+	margin: 8px 0;
+	padding: 8px;
+	font-weight: 600;
+	font-size: 1.1em;
+}
+
+.pwInputBtn {
+	background: #494949;
+	border: 3px solid #292929;
+	color: #fff;
+	font-weight: 600;
+	font-size: 1.2em;
+	padding: 8px;
+	margin: 0 auto;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px; 
+	cursor: pointer;
+}
+
+.pwInputForm {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.loginContainer {
+	padding: 42px 0 0 0;
+}
+
+.loginContainer form {
+	height: auto;
+	background: #494949;
+	margin: 0 auto 0 auto;
+	border: 3px solid #292929;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	width: 30em;
+	padding: 2em 2em 6em 2em;
+	border-image: initial;
+}
+
+.loginContainer h2 {
+	font-weight: 600;
+	font-size: 1.2em;
+	color: #fff;
+	margin: 0 0 24px 0;
+}
+
+.loginContainer input {
+	width: 95%;
+	display: block;
+	float: none;
+}
+
+.loginContainer label {
+	display: block;
+	float: none;
+	padding: 0;
+	margin: 8px 0 2px 0;
+}
+
+.loginContainer button {
+	border: 3px solid #fff;
+	padding: 8px 16px;
+	background: transparent;
+	color: #fff;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	font-size: 1.2em;
+	font-weight: 600;
+	margin: 14px 0 0 0;
+	float: right;
+}
+
+.loginContainer button:hover {
+	background: #383838;
+}
+
+.menuPage li {
+    background: #f3f3f3;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    border: 3px solid #f3f3f3;
+    padding: 6px;
+    margin: 8px;
+    font-weight: 600;
+    width: 80%;
+    cursor: pointer;
+    position: relative;
+}
+
+.menuPage input {
+    background: transparent;
+    display: block;
+    margin: -1px 0 -8px -2px;
+    padding: 0 0 5px 0;
+    border-bottom: 2px solid transparent;
+    font-weight: 600;
+    font-size: 1em;
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+}
+
+.menuPage input:focus {
+	border-bottom: 2px solid #8ac53e;
+}
+
+.menuBasic li:hover {
+    background: #e5e5e5;
+}
+
+.menuPage {
+	width: 220px;
+	position: absolute;
+}
+
+.menuStyling li:last-of-type {
+	margin: 32px 8px 8px 8px;
+	width: 42%;
+}
+
+.settings .basicInfo, .settings .menuStyling, .settings .menuBasic {
+	left: 100%;
+}
+
+.settings .activeMenu {
+	left: 0% !important;
+}
+
+.menuPage h2 {
+	color: #fff;
+	font-weight: 600;
+	font-size: 1.2em;
+	margin: 24px 8px 12px 8px;
+	text-decoration: underline;
+}
+
+.barrelRoll {
+	-webkit-animation-name: barrelRoll;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay: 200ms;
+	-moz-animation-name: barrelRoll;
+	-moz-animation-duration: 1s;
+	-moz-animation-iteration-count: 1;
+	-moz-animation-timing-function: linear;
+	-moz-animation-delay: 200ms;
+}
+
+.mask {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+	z-index: 99;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	opacity: 0;
+}
+
+.activeMask {
+	z-index: 101 !important;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	-moz-opacity: 1;
+	-khtml-opacity: 1;
+	opacity: 1;
+}
+
+.maskFill {
+	background: #000;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+	filter: alpha(opacity=60);
+	-moz-opacity: .6;
+	-khtml-opacity: .6;
+	opacity: .6;
+	
+}
+
+.maskContainer h2 {
+	font-size: 1.4em;
+	color: #fff;
+	font-weight: 600;
+}
+
+.maskInnerWrap {
+	position: relative;
+	margin: 0 auto;
+	width: 466px;
+}
+
+.maskContainer {
+	height: auto;
+	width: 420px;
+	background: #494949;
+	margin: 2em auto 0 auto;
+	border: 3px solid #292929;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	z-index: 1000;
+	position: absolute;
+	padding: 20px;
+	z-index: 100;
+}
+
+.maskContainer form {
+	padding: 0 0 66px 0;
+}
+
+.maskContainer form input {
+	float: none;
+	display: block;
+	outline: none;
+}
+
+.maskContainer form label {
+	clear: both;
+	float:none;
+	display: block;
+	padding: 14px 0 2px 0;
+}
+
+.maskClose {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	-webkit-border-radius: 16px;
+	-moz-border-radius: 16px;
+	border-radius: 16px;
+	height: 16px;
+	width: 16px;
+	border: 2px solid #292929;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	cursor: pointer;
+}
+
+.maskClose p {
+	font-size: 1.1em;
+	font-weight: 600;
+	color: white;
+	margin: -5px -2px -5px -2px;
+	padding: 2px 5px;
+	display: block;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+.maskClose:hover {
+	background: #292929;
+}

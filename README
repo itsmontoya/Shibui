@@ -1,0 +1,20 @@
+ _____ _     _ _           _ 
+/  ___| |   (_) |         (_)
+\ `--.| |__  _| |__  _   _ _ 
+ `--. \ '_ \| | '_ \| | | | |
+/\__/ / | | | | |_) | |_| | |
+\____/|_| |_|_|_.__/ \__,_|_|                                                               
+
+Shibui is a light-weight and simple Content Management System geared towards smaller websites (Under 10 pages). 
+This system uses JSON to store content and website settings. The advantage this is lightning-fast load times, 
+and effortless deployments. This project is currently in the Alpha stages and the beta release is projected for 
+June. 
+
+Lead Developer: Josh Montoya (@itsMontoya)
+
+Thanks to:
+Andrew McGrath - Development Assistance/Southern Hemisphere Influence
+Bryan Cesar - Design Assistance (Lead)
+Taylor Bayouth - Logo Creation
+
+Current Live Example - http://dev.itsmontoya.com
