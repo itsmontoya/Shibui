@@ -5,10 +5,7 @@
 /\__/ / | | | | |_) | |_| | |
 \____/|_| |_|_|_.__/ \__,_|_|                                                               
 
-Shibui is a light-weight and simple Content Management System geared towards smaller websites (Under 10 pages). 
-This system uses JSON to store content and website settings. The advantage this is lightning-fast load times, 
-and effortless deployments. This project is currently in the Alpha stages and the beta release is projected for 
-June. 
+Shibui is a light-weight and simple Content Management System geared towards smaller websites (Under 10 pages). This system uses JSON to store content and website settings. The advantage this is lightning-fast load times, and effortless deployments. This project is currently in the Alpha stages and the beta release is projected for June. 
 
 Lead Developer: Josh Montoya (@itsMontoya)
 
@@ -18,3 +15,9 @@ Bryan Cesar - Design Assistance (Lead)
 Taylor Bayouth - Logo Creation
 
 Current Live Example - http://dev.itsmontoya.com
+
+Installation:
+- Copy and Paste Shibui files to server directory
+- Create SQL database with username and password. 
+- Create a config.php file within the assets folder (sample-config.php is included)
+- Navigate to /admin to login and access the Administration Dashboard
