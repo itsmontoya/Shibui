@@ -35,7 +35,7 @@ $final_filename = 'logo'.$ext;
 copy($current , $_SERVER['DOCUMENT_ROOT'].'/images/'.$final_filename);
 unlink($current);
 
-header("location:http://dev.itsmontoya.com/admin/settings/imageUploadtest.php?success=success");
+header("location:".$_SERVER['HTTP REFERER']."/admin/settings/logoManager/logoManager.php?success=success");
 exit(0);
 
 ?>
