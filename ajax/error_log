@@ -1,0 +1,35 @@
+[01-Feb-2012 10:17:46] PHP Warning:  fopen(Home.json) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: Permission denied in /home/jmontoya/public_html/dev/ajax/postPage.php on line 33
+[01-Feb-2012 10:17:46] PHP Warning:  fwrite(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 34
+[01-Feb-2012 10:17:46] PHP Warning:  fclose(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 35
+[01-Feb-2012 10:19:35] PHP Warning:  fopen(Home.json) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: Permission denied in /home/jmontoya/public_html/dev/ajax/postPage.php on line 33
+[01-Feb-2012 10:19:35] PHP Warning:  fwrite(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 34
+[01-Feb-2012 10:19:35] PHP Warning:  fclose(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 35
+[01-Feb-2012 10:26:31] PHP Warning:  fopen(Home.json) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: Permission denied in /home/jmontoya/public_html/dev/ajax/postPage.php on line 33
+[01-Feb-2012 10:26:31] PHP Warning:  fwrite(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 34
+[01-Feb-2012 10:26:31] PHP Warning:  fclose(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 35
+[01-Feb-2012 11:42:35] PHP Warning:  fopen(Home.json) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: Permission denied in /home/jmontoya/public_html/dev/ajax/postPage.php on line 33
+[01-Feb-2012 11:42:35] PHP Warning:  fwrite(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 34
+[01-Feb-2012 11:42:35] PHP Warning:  fclose(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 35
+[01-Feb-2012 11:43:05] PHP Warning:  fopen(Home.json) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: Permission denied in /home/jmontoya/public_html/dev/ajax/postPage.php on line 33
+[01-Feb-2012 11:43:05] PHP Warning:  fwrite(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 34
+[01-Feb-2012 11:43:05] PHP Warning:  fclose(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 35
+[01-Feb-2012 11:44:38] PHP Warning:  fopen(Home.json) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: Permission denied in /home/jmontoya/public_html/dev/ajax/postPage.php on line 33
+[01-Feb-2012 11:44:38] PHP Warning:  fwrite(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 34
+[01-Feb-2012 11:44:38] PHP Warning:  fclose(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 35
+[01-Feb-2012 11:45:55] PHP Warning:  fopen(Home.json) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: Permission denied in /home/jmontoya/public_html/dev/ajax/postPage.php on line 33
+[01-Feb-2012 11:45:55] PHP Warning:  fwrite(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 34
+[01-Feb-2012 11:45:55] PHP Warning:  fclose(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 35
+[01-Feb-2012 11:46:01] PHP Warning:  fopen(Home.json) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: Permission denied in /home/jmontoya/public_html/dev/ajax/postPage.php on line 33
+[01-Feb-2012 11:46:01] PHP Warning:  fwrite(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 34
+[01-Feb-2012 11:46:01] PHP Warning:  fclose(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 35
+[01-Feb-2012 11:46:08] PHP Warning:  fopen(Home.json) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: Permission denied in /home/jmontoya/public_html/dev/ajax/postPage.php on line 33
+[01-Feb-2012 11:46:08] PHP Warning:  fwrite(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 34
+[01-Feb-2012 11:46:08] PHP Warning:  fclose(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 35
+[01-Feb-2012 11:46:09] PHP Warning:  fopen(Home.json) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: Permission denied in /home/jmontoya/public_html/dev/ajax/postPage.php on line 33
+[01-Feb-2012 11:46:09] PHP Warning:  fwrite(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 34
+[01-Feb-2012 11:46:09] PHP Warning:  fclose(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 35
+[01-Feb-2012 11:46:14] PHP Warning:  fopen(Home.json) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: Permission denied in /home/jmontoya/public_html/dev/ajax/postPage.php on line 33
+[01-Feb-2012 11:46:14] PHP Warning:  fwrite(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 34
+[01-Feb-2012 11:46:14] PHP Warning:  fclose(): supplied argument is not a valid stream resource in /home/jmontoya/public_html/dev/ajax/postPage.php on line 35
+[09-Feb-2012 16:39:58] PHP Warning:  unlink(Copacabana.json) [<a href='function.unlink'>function.unlink</a>]: No such file or directory in /home/jmontoya/public_html/dev/ajax/deletePage.php on line 22
+[09-Feb-2012 16:40:23] PHP Warning:  unlink(Copacabana.json) [<a href='function.unlink'>function.unlink</a>]: No such file or directory in /home/jmontoya/public_html/dev/ajax/deletePage.php on line 22

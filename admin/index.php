@@ -96,7 +96,7 @@
 			
 			<div class="maskContainer fontSizingContainer hiddenContainer transition">
 				<div class="maskClose"><p>x</p></div>
-				<form name="imageUpload" method="POST" action="settings/imageUploader.php" enctype="multipart/form-data">
+				<form name="imageUpload" method="POST" action="">
 					<h2>Font Sizing</h2>
 					<label for="headerOne">Header One</label>
 					<input type="text" name="headerOne">
@@ -110,7 +110,12 @@
 			
 			<div class="maskContainer logoUploadContainer hiddenContainer transition">
 				<div class="maskClose"><p>x</p></div>
-				<iframe src="settings/imageUploadtest.php" height="340px" width="410px"></iframe>
+				<iframe src="settings/logoManager/logoManager.php" height="340px" width="410px"></iframe>
+			</div>
+			
+			<div class="maskContainer imageUploadContainer hiddenContainer transition">
+				<div class="maskClose"><p>x</p></div>
+				<iframe src="settings/galleryManager/galleryManager.php?function=upload" height="340px" width="410px"></iframe>
 			</div>
 			
 			<div class="maskContainer colorsContainer hiddenContainer transition">

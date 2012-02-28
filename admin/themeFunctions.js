@@ -311,13 +311,32 @@ singleEnter = doubleEnter.replace(/\n/g,'<br>');
 */
 
 /* TinyMCE Customization */
+// Create a new plugin class
+tinymce.create('tinymce.plugins.ShibuiGalleryManager', {
+    init : function(ed, url) {
+        // Register an example button
+        ed.addButton('GalleryManager', {
+            title : 'Gallery Manager',
+            onclick : function() {
+                 
+			showMask('imageUpload');
+                 
+            },
+            'class' : 'bold' // Use the bold icon from the theme
+        });
+    }
+});
+
+// Register plugin with a short name
+tinymce.PluginManager.add('GalleryManager', tinymce.plugins.ShibuiGalleryManager);
+
 function wysiwygLoad(){ 
 	tinyMCE.init({
         theme : "advanced",theme_advanced_toolbar_location : "top", mode : "textareas", width: 702,
-        plugins: "preview",
+        plugins: "preview, GalleryManager",
         mode: "none",
         theme_advanced_buttons1 : "fontselect,fontsizeselect,,formatselect,|,bold,italic,underline,strikethrough,|,forecolor,backcolor,forecolorpicker,|,justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,outdent,indent,hr",
-        theme_advanced_buttons2 : "cut,copy,paste,undo,redo,|,link,unlink,image,cleanup,code,visualaid,anchor,newsdocument,preview",
+        theme_advanced_buttons2 : "cut,copy,paste,undo,redo,|,link,unlink,GalleryManager,cleanup,code,visualaid,anchor,newsdocument,preview",
         theme_advanced_buttons3 : "",
         theme_advanced_toolbar_align : "left",
         plugin_preview_width: "1024px",
@@ -325,6 +344,10 @@ function wysiwygLoad(){
 	});
 }
 
+function SGMAddImage(current){
+	currentImage = current;
+	tinyMCE.execCommand('mceInsertContent', false, '<img src="'+currentImage+'" />');
+}
 
 function wysiwygStart(){
 	if(tinymce.editors.length > 1){
