@@ -1,4 +1,1 @@
-<?php
-	header("location:".$_SERVER['HTTP REFERER']."/admin/plugins/galleryManager/galleryManager.php?success=success&function=gallery");
-	exit(0);
-?>
+<iframe src="plugins/galleryManager/galleryManager.php?function=gallery" height="100%" width="100%"></iframe>

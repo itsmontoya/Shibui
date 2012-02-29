@@ -1,4 +1,1 @@
-<?php 
-	header("location:".$_SERVER['HTTP REFERER']."/admin/plugins/logoManager/logoManager.php");
-	exit(0);
-?>
+<iframe src="plugins/logoManager/logoManager.php" height="100%" width="100%"></iframe>

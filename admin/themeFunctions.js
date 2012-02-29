@@ -30,22 +30,6 @@ $(document).ready(function(){
 	
 	wysiwygLoad();
 	
-	//CMK Config
-	CMKConfig =
-	[
-		{ name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
-		{ name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt' ] },
-		{ name: 'forms', items : [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
-		{ name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe' ] },
-		'/',
-		{ name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
-		{ name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] },
-		{ name: 'colors', items : [ 'TextColor','BGColor' ] },
-		{ name: 'links', items : [ 'Link','Unlink','Anchor' ] },
-		{ name: 'tools', items : [ 'Maximize', 'ShowBlocks','-','About' ] },
-		'/',
-		{ name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] }
-	];
 });
 
 function urlCheck(){
@@ -160,7 +144,7 @@ function addPageLoadOut(current) {
 				validatedPost = decodedPost.replace(/\+/g,' ');
 				subTitle = window.atob(val['Sub-Title']);
 				
-				$('.content').html('<form class="fade transition"><label for="Title">Title</label><input id="Title" type="text" class="Title" value="'+Title+'"><br><label for="subTitle">subTitle</label><input id="subTitle" type="text" class="subTitle" value="'+subTitle+'"><br><label for="Post">Post</label><textarea id="Post" name="Post" class="Post">'+validatedPost+'</textarea><br><div class="btnDiv">Add Page</div></form>');
+				$('.content').html('<form class="fade transition"><label for="Title">Title</label><input id="Title" type="text" class="Title" value="'+Title+'"><br><label for="subTitle">subTitle</label><input id="subTitle" type="text" class="subTitle" value="'+subTitle+'"><br><label for="Post">Post</label><textarea id="Post" name="Post" class="Post">'+validatedPost+'</textarea><br><div class="btnDiv">Edit Page</div></form>');
 				var sizeArray = {
 									'height' : '408px',
 									'width' : '800px'
@@ -418,10 +402,10 @@ function submitSettings(current){
 	progressIndicator();
 	configType = current;
 	if(configType === 'basicSettings'){
-		companyName = $('iframe').contents().find('.companyNameInput').val() 
-		phoneNumber = $('iframe').contents().find('.phoneNumberInput').val() 
-		city = $('iframe').contents().find('.cityInput').val() 
-		state = $('iframe').contents().find('.stateInput').val() 
+		companyName = $('.companyNameInput').val() 
+		phoneNumber = $('.phoneNumberInput').val() 
+		city = $('.cityInput').val() 
+		state = $('.stateInput').val() 
 		
 		results = 'configType='+configType+'&companyName='+companyName+'&phoneNumber='+phoneNumber+'&city='+city+'&state='+state;
 		$.post('http://'+document.location.hostname+'/admin/settings/settingsManager.php?'+results, "json").success(function() {successIndicator(); hideMask();});
@@ -431,7 +415,13 @@ function submitSettings(current){
 function popWin(current, height, width){
 	
 	maskWidth = width + 46;
-	$('.maskInnerWrap').css("width",maskWidth+"px");
+	maskHeight = height + 46;
+	
+	$('.maskInnerWrap').css({
+		width: maskWidth,
+		height: maskHeight
+	});
+	
 	
 	if(height != 'auto'){
 		height = height+'px';
@@ -447,8 +437,22 @@ function popWin(current, height, width){
 	if (width === null || width === undefined) {
 		width = '410px';
 	}
+
+	$.ajax({
+	url:"plugins/"+current+"/index.php",
+		data: "",
+		type:  "GET",
+		statusCode: {
+		404: function() {
+				alert('page not found');
+			}
+		},
+		success: function(obj) {
+			$('.popWin').html('<div class="maskClose"><p>x</p></div>\n'+obj).removeClass('hiddenContainer');
+			$('.mask').addClass('activeMask');
+			//$('.popWin').html('<div class="maskClose"><p>x</p></div>\n<iframe src="plugins/'+current+'/index.php" height="'+height+'px" width="'+width+'px"></iframe>').removeClass('hiddenContainer');
+			$('.maskClose').bind('mousedown',function(){hideMask();});
+		}
+	});
 	
-	$('.mask').addClass('activeMask');
-	$('.popWin').html('<div class="maskClose"><p>x</p></div>\n<iframe src="plugins/'+current+'/index.php" height="'+height+'px" width="'+width+'px"></iframe>').removeClass('hiddenContainer');
-	$('.maskClose').bind('mousedown',function(){hideMask();});
 }
