@@ -899,7 +899,7 @@ form .btnDiv:hover {
 
 .maskContainer {
 	height: auto;
-	width: 420px;
+	width: auto;
 	background: #494949;
 	margin: 2em auto 0 auto;
 	border: 3px solid #292929;

@@ -98,7 +98,7 @@ function loadOut(current, data){
 
 function passwordLoadOut(){
 
-	$.getJSON('http://dev.itsmontoya.com/admin/settings/config.json', function(data) {
+	$.getJSON('http://'+document.location.hostname+'/admin/settings/config.json', function(data) {
 		$.each(data, function(key, val) {
 			entry = key;
 			Password = val['Password'];
@@ -151,7 +151,7 @@ function addPageLoadOut(current) {
 	}
 	
 	if(current != 'New') {
-		$.getJSON('http://dev.itsmontoya.com/ajax/'+currentPageEdit+'.json', function(data) {
+		$.getJSON('http://'+document.location.hostname+'/ajax/'+currentPageEdit+'.json', function(data) {
 			$.each(data, function(key, val){
 				entry = key;
 				Title = window.atob(val['Title']);
@@ -175,7 +175,7 @@ function addPageLoadOut(current) {
 
 function editPageLoadOut() {
 	$('.content').html('<h1 class="transition fade">Which page would you like to edit?</h1><ul id="editListUL" class="fade transition"></ul>');
-	$.getJSON('http://dev.itsmontoya.com/ajax/navigation.json', function(data) {
+	$.getJSON('http://'+document.location.hostname+'/ajax/navigation.json', function(data) {
 		$.each(data, function(key, val) {
 			entry = key;
 			Title = window.atob(val['Title']);
@@ -197,7 +197,7 @@ function editPageLoadOut() {
 
 function deletePageLoadOut() {
 	$('.content').html('<h1 class="transition fade">Which page would you like to delete?</h1><ul id="editListUL" class="fade transition"></ul>');
-	$.getJSON('http://dev.itsmontoya.com/ajax/navigation.json', function(data) {
+	$.getJSON('http://'+document.location.hostname+'/ajax/navigation.json', function(data) {
 		$.each(data, function(key, val) {
 			entry = key;
 			Title = window.atob(val['Title']);
@@ -211,7 +211,7 @@ function deletePageLoadOut() {
 				data = $(this).text();
 				jsonName = data.replace(/[^a-zA-Z0-9]/g,'');
 				progressIndicator();
-				$.post('http://dev.itsmontoya.com/ajax/deletePage.php?jsonName='+jsonName+'&Title='+Title+'&encodedTitle='+encodedTitle, "json").success(function() {successIndicator();loadOut('Delete Page');});
+				$.post('http://'+document.location.hostname+'/ajax/deletePage.php?jsonName='+jsonName+'&Title='+Title+'&encodedTitle='+encodedTitle, "json").success(function() {successIndicator();loadOut('Delete Page');});
 			});
 		
 		});
@@ -242,8 +242,8 @@ function addPage(){
 	//Working on getting [checkmark] box to work right. Check back in the morning
 	
 	results = 'pageName='+pageName+'&Title='+encodedTitle+'&subTitle='+subTitle+'&pageContent='+cleanedContent;
-	postURL ='http://dev.itsmontoya.com/ajax/postPage.php?'+results;
-	$.post('http://dev.itsmontoya.com/ajax/postPage.php?'+results, "json").success(function() {successIndicator();loadOut('Add Page');});
+	postURL = 'http://'+document.location.hostname+'/ajax/postPage.php?'+results;
+	$.post('http://'+document.location.hostname+'/ajax/postPage.php?'+results, "json").success(function() {successIndicator();loadOut('Add Page');});
 	wysiwygEnd();
 }
 
@@ -317,10 +317,9 @@ tinymce.create('tinymce.plugins.ShibuiGalleryManager', {
         // Register an example button
         ed.addButton('GalleryManager', {
             title : 'Gallery Manager',
-            onclick : function() {
-                 
-			showMask('imageUpload');
-                 
+            onclick : function() { 
+				//showMask('imageUpload');
+	            popWin('galleryManager', 500, 400);     
             },
             'class' : 'bold' // Use the bold icon from the theme
         });
@@ -381,7 +380,7 @@ function showMask(current){
 
 function fillMaskContainer(current){
 	
-	$.getJSON('settings/basicSettings.json', function(data) {
+	$.getJSON('http://'+document.location.hostname+'/admin/settings/basicSettings.json', function(data) {
 		
 		$.each(data, function(key, val) {
 			entry = key;
@@ -402,7 +401,7 @@ function fillMaskContainer(current){
 
 function hideMask(){
 	$('.maskContainer').addClass('hiddenContainer');
-	setTimeout(function(){$('.mask').removeClass('activeMask');}, 400);
+	setTimeout(function(){$('.mask').removeClass('activeMask');$('.popWin').html('');}, 400);
 }
 
 function stylingSubMenu(){
@@ -419,12 +418,37 @@ function submitSettings(current){
 	progressIndicator();
 	configType = current;
 	if(configType === 'basicSettings'){
-		companyName = $('.companyNameInput').val();
-		phoneNumber = $('.phoneNumberInput').val();
-		city = $('.cityInput').val();
-		state = $('.stateInput').val();
+		companyName = $('iframe').contents().find('.companyNameInput').val() 
+		phoneNumber = $('iframe').contents().find('.phoneNumberInput').val() 
+		city = $('iframe').contents().find('.cityInput').val() 
+		state = $('iframe').contents().find('.stateInput').val() 
 		
 		results = 'configType='+configType+'&companyName='+companyName+'&phoneNumber='+phoneNumber+'&city='+city+'&state='+state;
-		$.post('http://dev.itsmontoya.com/admin/settings/settingsManager.php?'+results, "json").success(function() {successIndicator(); hideMask();});
+		$.post('http://'+document.location.hostname+'/admin/settings/settingsManager.php?'+results, "json").success(function() {successIndicator(); hideMask();});
 	}
+}
+
+function popWin(current, height, width){
+	
+	maskWidth = width + 46;
+	$('.maskInnerWrap').css("width",maskWidth+"px");
+	
+	if(height != 'auto'){
+		height = height+'px';
+	}
+	
+	if(width != 'auto'){
+		width = width+'px';
+	}
+	
+	if(height === null || height === undefined){
+		height = '340px';
+	}
+	if (width === null || width === undefined) {
+		width = '410px';
+	}
+	
+	$('.mask').addClass('activeMask');
+	$('.popWin').html('<div class="maskClose"><p>x</p></div>\n<iframe src="plugins/'+current+'/index.php" height="'+height+'px" width="'+width+'px"></iframe>').removeClass('hiddenContainer');
+	$('.maskClose').bind('mousedown',function(){hideMask();});
 }

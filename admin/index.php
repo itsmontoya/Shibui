@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php 
+	session_start(); 
+	$docRoot = getenv("HTTP_REFERER");
+	$requestURL = 'http://'.getenv("HTTP_HOST");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +12,9 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="http://dev.itsmontoya.com/admin/tiny_mce/tiny_mce.js"></script>
-	<script type="text/javascript" src="http://dev.itsmontoya.com/admin/tiny_mce/jquery.tinymce.js"></script>
-	<script src="http://dev.itsmontoya.com/admin/themeFunctions.js"></script>
+	<script type="text/javascript" src="<?php echo $requestURL; ?>/admin/tiny_mce/tiny_mce.js"></script>
+	<script type="text/javascript" src="<?php echo $requestURL; ?>/admin/tiny_mce/jquery.tinymce.js"></script>
+	<script src="<?php echo $requestURL; ?>/admin/themeFunctions.js"></script>
 	
 </head>
 <body>
@@ -23,8 +27,8 @@
 					<li><a class="addPageLink">Add Page</a></li>
 					<li><a class="editPageLink">Edit Page</a></li>
 					<li><a class="deletePageLink">Delete Page</a></li>
-					<li><a class="logOut" href="http://dev.itsmontoya.com/cookies/logout.php">Log Out</a></li>
-					<li><a class="goBack" href="http://dev.itsmontoya.com">Go Back to Website</a></li>
+					<li><a class="logOut" href="<?php echo $docRoot; ?>cookies/logout.php">Log Out</a></li>
+					<li><a class="goBack" href="<?php echo $requestURL; ?>">Go Back to Website</a></li>
 				</ul>
 			
 			</nav>
@@ -41,10 +45,10 @@
 					<div class="menuPage menuBasic transition activeMenu">
 						<h2>Settings</h2>
 						<ul>
-							<li class="menuBasicSettings">Basic Information</li>
+							<li onclick="popWin('basicSettings', 500, 410);">Basic Information</li>
 							<li class="stylingMenuItem">Styling</li>
-							<li class="menuLogoUpload">Logo</li>
-							<li>SEO Config</li>
+							<li onclick="popWin('logoManager', 400, 410);">Logo</li>
+							<li onclick="popWin('SEO', 400, 680);">SEO Config</li>
 							<li>Add-ons</li>
 						</ul>
 					</div>
@@ -63,7 +67,7 @@
 			</div>	
 			<?php }else{ ?>
 			<div class="loginContainer">
-				<form method="post" action="http://dev.itsmontoya.com/cookies/dbfetch.php">
+				<form method="post" action="<?php echo $requestURL; ?>/cookies/dbfetch.php">
 					<h2>Please login to access the Administration area</h2>
 					<label for="Username">Username</label>
 					</input><input name="User" type="text">
@@ -78,63 +82,11 @@
 	</div>
 	<div class="mask">
 		<div class="maskInnerWrap">	
-			<div class="maskContainer basicSettingsContainer hiddenContainer transition">
+			
+			<div class="popWin maskContainer hiddenContainer transition">
 				<div class="maskClose"><p>x</p></div>
-				<form enctype="multipart/form-data">
-					<h2>Basic Settings</h2>
-					<label for="companyName">Company Name</label>
-					<input type="text" name="companyName" class="companyNameInput">
-					<label for="phoneNumber">Phone Number</label>
-					<input type="text" name="phoneNumber" class="phoneNumberInput">
-					<label for="city">City</label>
-					<input type="text" name="city" class="cityInput">
-					<label for="state">State</label>
-					<input type="text" name="state" class="stateInput">
-					<div class="btnDiv">Save</div>
-				</form>
 			</div>
 			
-			<div class="maskContainer fontSizingContainer hiddenContainer transition">
-				<div class="maskClose"><p>x</p></div>
-				<form name="imageUpload" method="POST" action="">
-					<h2>Font Sizing</h2>
-					<label for="headerOne">Header One</label>
-					<input type="text" name="headerOne">
-					<label for="headerRest">Headers Two - Six</label>
-					<input type="text" name="headerRest">
-					<label for="paragraph">Paragraph</label>
-					<input type="text" name="paragraph">
-					<div class="btnDiv">Save</div>
-				</form>
-			</div>
-			
-			<div class="maskContainer logoUploadContainer hiddenContainer transition">
-				<div class="maskClose"><p>x</p></div>
-				<iframe src="settings/logoManager/logoManager.php" height="340px" width="410px"></iframe>
-			</div>
-			
-			<div class="maskContainer imageUploadContainer hiddenContainer transition">
-				<div class="maskClose"><p>x</p></div>
-				<iframe src="settings/galleryManager/galleryManager.php?function=upload" height="340px" width="410px"></iframe>
-			</div>
-			
-			<div class="maskContainer colorsContainer hiddenContainer transition">
-				<div class="maskClose"><p>x</p></div>
-				<form>
-					<h2>Basic Settings</h2>
-					<label for="companyName">Company Name</label>
-					<input type="text" name="companyName">
-					<label for="phoneNumber">Phone Number</label>
-					<input type="text" name="phoneNumber">
-					<label for="city">City</label>
-					<input type="text" name="city">
-					<label for="state">State</label>
-					<input type="text" name="state">
-					<label for="logoInput">Logo</label>
-					<input type="text" name="logoInput">
-					<div class="btnDiv">Save</div>
-				</form>
-			</div>
 		</div>
 		<div class="maskFill"></div>
 	</div>

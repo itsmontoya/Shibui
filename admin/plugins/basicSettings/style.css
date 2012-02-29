@@ -1,0 +1,66 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+h2 {
+	font-size: 1.4em;
+	color: #fff;
+	font-weight: 600;
+	margin: 1em 0 0 0;
+}
+
+form {
+	padding: 0 0 54px 0;
+	margin: 0;
+}
+
+form input {
+	float: none;
+	display: block;
+	outline: none;
+}
+
+form label {
+	clear: both;
+	float:none;
+	display: block;
+	padding: 14px 0 2px 0;
+	color: #fff;
+	font-size: 1.1em;
+	font-weight: 600;
+	margin: 4px 0;
+	
+}
+
+form input, form textarea {
+width: 96%;
+border: 3px solid white;
+padding: 0;
+margin: 4px 0;
+padding: 8px;
+font-weight: 600;
+font-size: 1.1em;
+}
+
+.clear {
+	clear: both;
+}
+
+form .btnDiv {
+background: #494949;
+border: 3px solid #292929;
+color: white;
+font-weight: 600;
+font-size: 1.2em;
+padding: 8px;
+float: right;
+margin: 8px 4% 0 0;
+-webkit-border-radius: 12px;
+-moz-border-radius: 12px;
+border-radius: 12px;
+cursor: pointer;
+}
+
+form .btnDiv:hover {
+	background: #292929;
+}
