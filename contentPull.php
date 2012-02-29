@@ -1,5 +1,6 @@
 <?php
 $docRoot = getenv("DOCUMENT_ROOT");
+$requestURL = 'http://'.getenv("HTTP_HOST");
 
 $getConfig = file_get_contents($docRoot.'/admin/settings/config.json');
 $decodedConfig = json_decode($getConfig,true);

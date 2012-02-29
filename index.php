@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php include 'contentPull.php'; ?>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>iM</title>
-	<link rel="stylesheet" type="text/css" href="http://dev.itsmontoya.com/style.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $requestURL; ?>/style.css" />
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript"></script>
-	<script src="http://dev.itsmontoya.com/themeFunctions.js"></script>
+	<script src="<?php echo $requestURL; ?>/themeFunctions.js"></script>
 	
 </head>
 <body>
 <?php include 'assets/assetConfig.php'; ?>
-<?php include 'contentPull.php'; ?>
 <?php include($basicHook); ?>
 	<div class="wrap">
 		<header>
