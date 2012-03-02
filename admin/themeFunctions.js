@@ -361,9 +361,9 @@ function showMask(current){
 	fillMaskContainer(configType);
 
 }
-
+/*
 function fillMaskContainer(current){
-	
+	//GET
 	$.getJSON('http://'+document.location.hostname+'/admin/settings/basicSettings.json', function(data) {
 		
 		$.each(data, function(key, val) {
@@ -383,6 +383,50 @@ function fillMaskContainer(current){
 	
 }
 
+function submitSettings(current){
+	//POST
+	progressIndicator();
+	configType = current;
+	if(configType === 'basicSettings'){
+		companyName = $('.companyNameInput').val() 
+		phoneNumber = $('.phoneNumberInput').val() 
+		city = $('.cityInput').val() 
+		state = $('.stateInput').val() 
+		
+		results = 'configType='+configType+'&companyName='+companyName+'&phoneNumber='+phoneNumber+'&city='+city+'&state='+state;
+		$.post('http://'+document.location.hostname+'/admin/settings/settingsManager.php?'+results, "json").success(function() {successIndicator(); hideMask();});
+	}
+}
+
+*/
+
+function fillMaskContainer(configType){
+	//GET
+	$.getJSON('http://'+document.location.hostname+'/admin/settings/'+configType+'.json', function(data) {
+		$.each(data, function(key, val) {
+			$('#'+configType+' input[name="'+key+'"]').val(val);	
+		});
+	});
+}
+
+function submitSettings(configType){
+	//POST
+	progressIndicator();
+	
+	var data = {};
+	
+	var formInputText = $('#'+configType+' input[type="text"]').each(function(){data[$(this).attr('name')]=$(this).val();});
+	//test for checkbox
+	var formCheckbox = $('#'+configType+' input[type="checkbox"').each(function(){data[$(this).attr('name')]=$(this).checked;});
+	
+	//var formTextArea = $('.'+name+'Wrap input').each(function(){data[$(this).attr('name')]=$(this).val();});
+	//var formSelect = $('.'+name+'Wrap input').each();
+	$.post('http://'+document.location.hostname+'/admin/settings/settingsManager.php?configType='+configType, data).success(function() {successIndicator(); hideMask();});
+	
+	//$.post('http://'+document.location.hostname+'/admin/settings/settingsManager.php?', data, "json").success(function() {successIndicator(); hideMask();});
+}
+
+
 function hideMask(){
 	$('.maskContainer').addClass('hiddenContainer');
 	setTimeout(function(){$('.mask').removeClass('activeMask');$('.popWin').html('');}, 400);
@@ -396,20 +440,6 @@ function stylingSubMenu(){
 function basicSubMenu(){
 	$('.menuPage').removeClass('activeMenu');
 	setTimeout(function(){$('.menuBasic').addClass('activeMenu');}, 440);
-}
-
-function submitSettings(current){
-	progressIndicator();
-	configType = current;
-	if(configType === 'basicSettings'){
-		companyName = $('.companyNameInput').val() 
-		phoneNumber = $('.phoneNumberInput').val() 
-		city = $('.cityInput').val() 
-		state = $('.stateInput').val() 
-		
-		results = 'configType='+configType+'&companyName='+companyName+'&phoneNumber='+phoneNumber+'&city='+city+'&state='+state;
-		$.post('http://'+document.location.hostname+'/admin/settings/settingsManager.php?'+results, "json").success(function() {successIndicator(); hideMask();});
-	}
 }
 
 function popWin(current, height, width){
@@ -439,7 +469,7 @@ function popWin(current, height, width){
 	}
 
 	$.ajax({
-	url:"plugins/"+current+"/index.php",
+	url:"plugins/"+current+"/edit.php",
 		data: "",
 		type:  "GET",
 		statusCode: {

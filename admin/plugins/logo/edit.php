@@ -1,0 +1,1 @@
+<iframe src="plugins/logo/logoManager.php" height="100%" width="100%"></iframe>

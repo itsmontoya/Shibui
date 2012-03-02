@@ -1,6 +1,4 @@
 $(document).ready(function(){
-	//loadOut('Home');
-	//navLoad();
 	$.ajaxSetup({ cache: false });
 	$('#navUL a').removeAttr("href");
 });
@@ -16,7 +14,7 @@ refreshFunction(current);
 }
 
 function contentPull(current) {
-	$.getJSON('http://dev.itsmontoya.com/ajax/'+current+'.json', function(data) {
+	$.getJSON('http://'+document.location.hostname+'/ajax/'+current+'.json', function(data) {
 		$.each(data, function(key, val) {
 			entry = key;
 			Title = window.atob(val['Title']);
@@ -38,19 +36,16 @@ function heightAdjustment() {
 	alert(containerHeight);
 }
 
-
-
 function navLoad(){
-	//$('.content').removeClass('fade');
-	$.getJSON('http://dev.itsmontoya.com/ajax/navigation.json', function(data) {
+	$.getJSON('http://'+document.location.hostname+'/ajax/navigation.json', function(data) {
 		$.each(data, function(key, val) {
 			entry = key;
 			Title = window.atob(val['Title']);
 			pageName = val['pageName'];
 			stripApos = pageName.replace(/'/g, '');
-			
-			$('#navUL').append('<li class="'+stripApos+'Li"><a onClick="loadOut('+pageName+')">'+Title+'</a></li>');
-			
+			if(pageName != 'Home'){
+				$('#navUL').append('<li class="'+stripApos+'Li"><a onClick="loadOut('+pageName+')">'+Title+'</a></li>');
+			}
 			var childHeight = $('.content').children().outerHeight();
 			$('.content').css('height',childHeight);
 		});
@@ -59,15 +54,6 @@ function navLoad(){
 
 function refreshFunction(current){
 	currentURL = document.location.href;
+	if(current === 'Home') current = '';
 	window.history.pushState(null,null,'./'+current);	
-	/*if(currentURL === "http://dev.itsmontoya.com/"){
-		window.history.pushState(null,null,'index.php/'+current);
-	}
-	if(currentURL === "http://dev.itsmontoya.com/index.php"){
-		window.history.pushState(null,null,'/'+current);
-	}
-	else {
-		window.history.pushState(null,null,'./'+current);
-	}
-	*/
 }

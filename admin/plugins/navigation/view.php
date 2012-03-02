@@ -1,5 +1,11 @@
 <?php
-	foreach($decodedNav as $object) {
+	global $dataArray;
+	global $page;
+	$navigation = $dataArray['navigation'];
+	
+	echo '<ul id="navUL">';
+	
+	foreach($navigation as $object) {
 		$pageName = str_replace("'", "", $object['pageName']);
 		$quotedPageName = $object['pageName'];
 		$Title = $object['Title'];
@@ -9,7 +15,7 @@
 			echo '<li class="'.$pageName.'Li active"><a href="'.$pageName.'" onClick="loadOut('.$quotedPageName.')">'.$decodedTitle.'</a></li>';
 		}
 		else{
-			if($pageName == $removeSlash){
+			if($pageName == $page){
 				echo '<li class="'.$pageName.'Li active"><a href="'.$pageName.'" onClick="loadOut('.$quotedPageName.')">'.$decodedTitle.'</a></li>';
 			}
 			else{
@@ -17,4 +23,6 @@
 			}
 		}
 	}
+	
+	echo '</ul>';
 ?>

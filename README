@@ -8,6 +8,7 @@
 Shibui is a light-weight and simple Content Management System geared towards smaller websites (Under 10 pages). This system uses JSON to store content and website settings. The advantage this is lightning-fast load times, and effortless deployments. This project is currently in the Alpha stages and the beta release is projected for June. 
 
 Lead Developer: Josh Montoya (@itsMontoya)
+Co-Developer: Mike Carter (@AppInsanity)
 
 Thanks to:
 Andrew McGrath - Development Assistance/Southern Hemisphere Influence
@@ -15,6 +16,17 @@ Bryan Cesar - Design Assistance (Lead)
 Taylor Bayouth - Logo Creation
 
 Current Live Example - http://dev.itsmontoya.com
+
+ //////////////////////////////////////////////////////////
+///                                                     ///
+///  Note: We are currently releasing nightly builds.   ///
+///        This project is still in Alpha stages and    ///
+///        We are looking towards a late March BETA     ///
+///        release. Please feel free to try out the     ///
+///        system. Contact Josh on twitter @itsMontoya  ///
+///        for assistance with setup.                   ///
+///                                                     ///
+//////////////////////////////////////////////////////////
 
 Installation:
 - Copy and Paste Shibui files to server directory

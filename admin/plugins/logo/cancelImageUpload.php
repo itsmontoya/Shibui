@@ -14,7 +14,7 @@ else if (file_exists($gifTemp)) {
 	unlink($gifTemp);
 }
 
-header("location:http://dev.itsmontoya.com/admin/settings/logoManager/logoManager.php?success=success");
+header("location:".$_SERVER['HTTP REFERER']."/admin/settings/logoManager/logoManager.php?success=success");
 exit(0);
 
 ?>

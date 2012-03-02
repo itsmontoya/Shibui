@@ -30,14 +30,14 @@ else
 		
 		if($row['password'] == $processedPass) {
 			$_SESSION['user_name'] = $row['user_name'];
-			header("location:http://dev.itsmontoya.com/admin/index.php");
+			header("location:".$_SERVER['HTTP REFERER']."/admin/index.php");
 			exit(0);
 		}
 	
 	}
 	
 	$_SESSION['user_name'] = null;
-	header("location:http://dev.itsmontoya.com/admin/index.php");
+	header("location:".$_SERVER['HTTP REFERER']."/admin/index.php");
 	exit(0);
 	
 

@@ -1,0 +1,5 @@
+{
+	"header": [{"data":"logo"},{"data":"basicSettings","view":"callout"}],
+	"sidebar": [{"data":"contactForm"}],
+	"footer": [{"data":"basicSettings"}]
+}

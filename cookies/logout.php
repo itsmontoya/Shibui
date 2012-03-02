@@ -1,6 +1,7 @@
 <? 
 	session_start();
 	session_destroy();
-	header("location:http://dev.itsmontoya.com/admin/index.php");
+	$reqURL = "http://".getenv("HTTP_HOST");
+	header("location:".$reqURL);
 	exit(0);
 ?>

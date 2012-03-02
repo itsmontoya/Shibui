@@ -27,7 +27,7 @@
 					<li><a class="addPageLink">Add Page</a></li>
 					<li><a class="editPageLink">Edit Page</a></li>
 					<li><a class="deletePageLink">Delete Page</a></li>
-					<li><a class="logOut" href="<?php echo $docRoot; ?>cookies/logout.php">Log Out</a></li>
+					<li><a class="logOut" href="<?php echo $requestURL; ?>cookies/logout.php">Log Out</a></li>
 					<li><a class="goBack" href="<?php echo $requestURL; ?>">Go Back to Website</a></li>
 				</ul>
 			
@@ -47,7 +47,7 @@
 						<ul>
 							<li onclick="popWin('basicSettings', 500, 410);">Basic Information</li>
 							<li class="stylingMenuItem">Styling</li>
-							<li onclick="popWin('logoManager', 400, 410);">Logo</li>
+							<li onclick="popWin('logo', 400, 410);">Logo</li>
 							<li onclick="popWin('SEO', 400, 680);">SEO Config</li>
 							<li>Add-ons</li>
 						</ul>

@@ -1,0 +1,7 @@
+{
+	"Name":"Basic Settings",
+	"Width":"600",
+	"Height":"500",
+	"Regions":["Header", "Footer", "Sidebar"],
+	"Dashboard":"True"
+}
