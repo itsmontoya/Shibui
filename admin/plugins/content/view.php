@@ -5,9 +5,8 @@
 	if(file_exists($pagePath)) {	
 		$getContent = file_get_contents($pagePath);
 		$decodedContent = json_decode($getContent,true);
-		foreach($decodedContent as $object) {
-			echo base64_decode($object['Post']);
-		}
+		//print_r($decodedContent);
+		echo $decodedContent['pageContent'];
 	}
 	else {echo "<h1>404</h1><p>I'm sorry, but there is no page at this address</p>";}
 ?>

@@ -18,7 +18,7 @@
 	
 </head>
 <body>
-
+	<!-- <?php $_SERVER['DOCUMENT_ROOT']; ?> -->
 	<div class="wrap">
 		<?php if($_SESSION['user_name'] != null){ ?>
 		<nav>
@@ -27,7 +27,7 @@
 					<li><a class="addPageLink">Add Page</a></li>
 					<li><a class="editPageLink">Edit Page</a></li>
 					<li><a class="deletePageLink">Delete Page</a></li>
-					<li><a class="logOut" href="<?php echo $requestURL; ?>cookies/logout.php">Log Out</a></li>
+					<li><a class="logOut" href="<?php echo $requestURL; ?>/cookies/logout.php">Log Out</a></li>
 					<li><a class="goBack" href="<?php echo $requestURL; ?>">Go Back to Website</a></li>
 				</ul>
 			
@@ -45,11 +45,11 @@
 					<div class="menuPage menuBasic transition activeMenu">
 						<h2>Settings</h2>
 						<ul>
-							<li onclick="popWin('basicSettings', 500, 410);">Basic Information</li>
+							<li onclick="popWin('siteInfo', 500, 410);">Basic Information</li>
 							<li class="stylingMenuItem">Styling</li>
 							<li onclick="popWin('logo', 400, 410);">Logo</li>
 							<li onclick="popWin('SEO', 400, 680);">SEO Config</li>
-							<li>Add-ons</li>
+							<li onclick="popWin('navigation', 400, 680);">Navigation</li>
 						</ul>
 					</div>
 					

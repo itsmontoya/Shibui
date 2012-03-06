@@ -147,6 +147,30 @@ nav ul {
 	height: 100%;
 }
 
+nav ul ul {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	visibility: hidden;
+}
+
+nav ul li:hover ul {
+	visibility: visible;
+}
+
+nav ul ul li:hover {
+	background: none;
+}
+
+nav ul ul li a {
+	color: #000;
+}
+
+nav ul ul li a:hover {
+	color: #000;
+	text-decoration: underline;
+}
+
 nav ul li {
 	float: left;
 	color: #fff;

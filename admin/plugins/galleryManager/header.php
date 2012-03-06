@@ -7,7 +7,7 @@
 
 <?php 
 	if(isset($_GET['success']) && 'success'==$_GET['success']){
-		echo '<script type="text/javascript">parent.successIndicator();parent.failIndicator("success");</script>';
+		echo '<script type="text/javascript">parent.successIndicator();</script>';
 	}
 ?>
 

@@ -194,6 +194,29 @@ float: left;
 	opacity: 0;
 	padding: 0;
 	cursor: pointer;
+	z-index: 9;
+}
+
+.galleryDisplay .inputMask {
+	position: absolute;
+	bottom: 8px;
+	border: none;
+	height: 44px;
+	width: 44px;
+	z-index: 10;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	opacity: 0;
+}
+
+.galleryDisplay .addInputMask {
+	left: 8px;
+}
+
+.galleryDisplay .delInputMask {
+	right: 8px;
 }
 
 .galleryDisplay .addBtn {
@@ -220,4 +243,5 @@ float: left;
 	-moz-opacity: 1;
 	-khtml-opacity: 1;
 	opacity: 1;
+	z-index: 11;
 }

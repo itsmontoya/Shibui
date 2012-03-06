@@ -1,36 +1,40 @@
 <?php
+	
 	function load($json){
-		global $dataArray, $viewArray;
+		global $dataArray, $viewArray, $docRoot;
+		
 		if($dataArray[$json] != null) return;
-		$path = $_SERVER['DOCUMENT_ROOT'].'/admin/settings/'.$json.'.json';
+		$path = $docRoot.'/admin/settings/'.$json.'.json';
+		$viewPath = $docRoot.'/admin/plugins/'.$json.'/view.php';
 		if (file_exists($path)){
 			$pull = file_get_contents($path);	
 			$decodePull = json_decode($pull, true);
 			$dataArray[$json] = $decodePull;
 		}
-		$viewArray[$json] = $_SERVER['DOCUMENT_ROOT'].'/admin/plugins/'.$json.'/view.php';
+		if(file_exists($viewPath)) $viewArray[$json] = $viewPath;
 	}
 	
-	function render($configType, $view=null){
-		global $dataArray;
-		global $viewArray;
-		
-		load($configType);		
-		if(isset($view)) include($_SERVER['DOCUMENT_ROOT'].'/admin/plugins/'.$configType.'/'.$view.'.php');
-		else include ($viewArray[$configType]);	
+	function render($configType, $view=null, $map=null){
+		global $dataArray, $viewArray, $docRoot;
+		if(isset($map)) load($map);
+		load($configType);
+		if(isset($view)) include($docRoot.'/admin/plugins/'.$configType.'/'.$view.'.php');
+		else include ($viewArray[$configType]);
+
 	}
 	
 	function loadTheme($data){
-		include($_SERVER['DOCUMENT_ROOT'].'/themes/'.$data.'/index.php');
+		global $docRoot;
+		include($docRoot.'/themes/'.$data.'/index.php');
 	}
 
 	function region($region){
-		global $dataArray;
+		global $dataArray, $docRoot;
 		load($dataArray['head']['Theme_Name']);
 		$data = $dataArray[$dataArray['head']['Theme_Name']];
 		$regionArray = $data[$region];
 		foreach ($regionArray as $region){
-			render($region['data'], $region['view']);
+			render($region['data'], $region['view'], $region['map']);
 		}		
 	}
 ?>

@@ -1,4 +1,4 @@
-<?php if(isset($_GET['success']) && 'success'==$_GET['success']){echo '<script type="text/javascript">successIndicator();failIndicator("success");</script>';}?>
+<?php if(isset($_GET['success']) && 'success'==$_GET['success']){echo '<script type="text/javascript">parent.successIndicator();parent.failIndicator("success");</script>';}?>
 
 <div class="logoManager">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>

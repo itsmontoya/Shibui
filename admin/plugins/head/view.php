@@ -1,4 +1,4 @@
-<?php global $dataArray; $data = $dataArray['head'];?>
+<?php global $dataArray, $docRoot, $requestURL; $data = $dataArray['head'];?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
 <link rel="stylesheet" type="text/css" href="<?php echo $requestURL; ?>/themes/<?php echo $data['Theme_Name']; ?>/style.css" />

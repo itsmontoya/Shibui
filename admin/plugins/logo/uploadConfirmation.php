@@ -1,4 +1,4 @@
-<?php if(isset($_GET['success']) && 'success'==$_GET['success']){echo '<script type="text/javascript">successIndicator();failIndicator("success");</script>';}?>
+<?php if(isset($_GET['success']) && 'success'==$_GET['success']){echo '<script type="text/javascript">parent.successIndicator();parent.failIndicator("success");</script>';}?>
 
 <script type="text/javascript">
 	function enableSubmit(){setTimeout(function(){$('#imageUploadSubmit').removeClass('fade');}, 800);}
@@ -10,6 +10,7 @@
 	    	width: 406px;
 	    	overflow: hidden;
 	    	color: #fff;
+	    	font-family: 'Open Sans', sans-serif;
 	    }
 	    
 		.logoManagerWrap h2 {

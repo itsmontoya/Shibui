@@ -1,5 +1,5 @@
 {
-	"header": [{"data":"logo"},{"data":"basicSettings","view":"callout"}],
+	"header": [{"data":"logo"},{"data":"callOut","map":"siteInfo"}],
 	"sidebar": [{"data":"contactForm"}],
-	"footer": [{"data":"basicSettings"}]
+	"footer": [{"data":"footer","map":"siteInfo"}]
 }

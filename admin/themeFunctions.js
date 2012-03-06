@@ -136,72 +136,91 @@ function addPageLoadOut(current) {
 	
 	if(current != 'New') {
 		$.getJSON('http://'+document.location.hostname+'/ajax/'+currentPageEdit+'.json', function(data) {
-			$.each(data, function(key, val){
-				entry = key;
-				Title = window.atob(val['Title']);
-				Post = val['Post'];
-				decodedPost = window.atob(val['Post']);
-				validatedPost = decodedPost.replace(/\+/g,' ');
-				subTitle = window.atob(val['Sub-Title']);
-				
-				$('.content').html('<form class="fade transition"><label for="Title">Title</label><input id="Title" type="text" class="Title" value="'+Title+'"><br><label for="subTitle">subTitle</label><input id="subTitle" type="text" class="subTitle" value="'+subTitle+'"><br><label for="Post">Post</label><textarea id="Post" name="Post" class="Post">'+validatedPost+'</textarea><br><div class="btnDiv">Edit Page</div></form>');
-				var sizeArray = {
-									'height' : '408px',
-									'width' : '800px'
-								}
-				$('.content').css(sizeArray);
-				setTimeout(function(){wysiwygStart();}, 200);
-				$('form .btnDiv').bind('mousedown',function(){addPage();});
-			});
+			
+			$('.content').html('<form class="fade transition"><label for="Title">Title</label><input id="Title" type="text" class="Title" value="'+data['Title']+'"><br><label for="subTitle">subTitle</label><input id="subTitle" type="text" class="subTitle" value="'+data['subTitle']+'"><br><label for="Post">Post</label><textarea id="Post" name="Post" class="Post">'+data['pageContent']+'</textarea><br><div class="btnDiv">Edit Page</div></form>');
+			var sizeArray = {'height' : '408px','width' : '800px'}
+			$('.content').css(sizeArray);
+			setTimeout(function(){wysiwygStart();}, 200);
+			$('form .btnDiv').bind('mousedown',function(){addPage();});
 		}).success(function(){setTimeout(function(){$('.content form').removeClass('fade');}, 400)});
 	}
 }
 
-function editPageLoadOut() {
-	$('.content').html('<h1 class="transition fade">Which page would you like to edit?</h1><ul id="editListUL" class="fade transition"></ul>');
-	$.getJSON('http://'+document.location.hostname+'/ajax/navigation.json', function(data) {
-		$.each(data, function(key, val) {
-			entry = key;
-			Title = window.atob(val['Title']);
-			pageName = val['pageName'];
-			pageNoQuotes = pageName.replace(/'/g,'');
-			pageBind = '.'+pageNoQuotes;
+function editPageLoadOut(obj) {
+	if(obj === null || obj === undefined){
+			ajax('listPages', 'json', 'GET', editPageLoadOut);
+		}
+		else {
+			console.log(obj);
+			console.log(obj[0]['Title']);
+			$('.content').html('<h1 class="transition fade">Which page would you like to edit?</h1><ul id="editListUL" class="fade transition"></ul>');
+			$.each(obj, function(i) {
+				Title = (obj[i]['Title']);	
+
+				$('#editListUL').append('<li class="editSelection">'+Title+'</li>');
+				$('.editSelection').bind('mousedown',function(){
+					data = $(this).text();
+					loadOut('Add Page', data);
+				});
+			});
+	
+			var childHeight = $('.content #editListUL').outerHeight() + $('.content h1').outerHeight();
+			$('.content').css({'height':childHeight,'width':''}); 
+			setTimeout(function(){$('.content').children().removeClass('fade');});
+		}
+	
+}
+
+function deletePageLoadOut(obj) {
+	if(obj === null || obj === undefined){
+		ajax('listPages', 'json', 'GET', deletePageLoadOut);
+	}
+	else {
+		$('.content').html('<h1 class="transition fade">Which page would you like to delete?</h1><ul id="editListUL" class="fade transition"></ul>');
+		$.each(obj, function(i) {
+			Title = (obj[i]['Title']);	
 			
 			
 			$('#editListUL').append('<li class="editSelection">'+Title+'</li>');
+			
 			$('.editSelection').bind('mousedown',function(){
 				data = $(this).text();
-				loadOut('Add Page', data);
+				jsonName = data.replace(/[^a-zA-Z0-9]/g,'');
+				progressIndicator();
+				postVar = 'http://'+document.location.hostname+'/ajax/deletePage.php?jsonName='+jsonName+'&Title='+Title;
+				$.post(postVar, "json").success(function() {successIndicator();loadOut('Delete Page');});
 			});
 		
 		});
-	}, "json").success(function() {var childHeight = $('.content #editListUL').outerHeight() + $('.content h1').outerHeight();
-	$('.content').css({'height':childHeight,'width':''}); setTimeout(function(){$('.content').children().removeClass('fade');}, 200)});
+
+		var childHeight = $('.content #editListUL').outerHeight() + $('.content h1').outerHeight();
+		$('.content').css({'height':childHeight,'width':''}); 
+		setTimeout(function(){$('.content').children().removeClass('fade');});
+	}
 }
 
-function deletePageLoadOut() {
-	$('.content').html('<h1 class="transition fade">Which page would you like to delete?</h1><ul id="editListUL" class="fade transition"></ul>');
-	$.getJSON('http://'+document.location.hostname+'/ajax/navigation.json', function(data) {
+	/*
+	
+	$.getJSON('http://'+document.location.hostname+'/admin/settings/navigation.json', function(data) {
 		$.each(data, function(key, val) {
 			entry = key;
-			Title = window.atob(val['Title']);
+			Title = val['Title'];
 			pageName = val['pageName'];
-			pageNoQuotes = pageName.replace(/'/g,'');
-			pageBind = '.'+pageNoQuotes;
-			encodedTitle = val['Title'];
+			pageBind = '.'+pageName;
 			
 			$('#editListUL').append('<li class="editSelection">'+Title+'</li>');
 			$('.editSelection').bind('mousedown',function(){
 				data = $(this).text();
 				jsonName = data.replace(/[^a-zA-Z0-9]/g,'');
 				progressIndicator();
-				$.post('http://'+document.location.hostname+'/ajax/deletePage.php?jsonName='+jsonName+'&Title='+Title+'&encodedTitle='+encodedTitle, "json").success(function() {successIndicator();loadOut('Delete Page');});
+				postVar = 'http://'+document.location.hostname+'/ajax/deletePage.php?jsonName='+jsonName+'&Title='+Title;
+				$.post(postVar, "json").success(function() {successIndicator();loadOut('Delete Page');});
 			});
 		
 		});
 	}, "json").success(function() {var childHeight = $('.content #editListUL').outerHeight() + $('.content h1').outerHeight();
 	$('.content').css({'height':childHeight,'width':''}); setTimeout(function(){$('.content').children().removeClass('fade');}, 400)});
-}
+	*/
 
 function addPage(){
 	failTimer('Start');
@@ -210,24 +229,20 @@ function addPage(){
 	//pageName = $('.pageName').val();
 	Title = $('.Title').val();
 	pageName = Title.replace(/[^a-zA-Z0-9]/g,'');
-	subTitle = btoa($('.subTitle').val());
+	subTitle = $('.subTitle').val();
 	pageContent = $('.Post').val();
-	encodedTitle = btoa(Title);
-	
-	//findCheckStart = tinyMCEContent.replace('/(<p>){0,1}([checklist]){1}(</p>){0,1}/g', '<div class="checkmarkContainer">');
-	//findCheckEnd = findCheckStart.replace('/.{1}/{1}checklist{1}.{1}(</p>){0,1}/g', '</div>');
 	
 	findCheckStart = tinyMCEContent.replace('<p>[checklist]</p>', '<div class="checkListContainer">');
 	findCheckEndP1 = findCheckStart.replace('<div>[/checklist]</div>', '</div>');
 	findCheckEndP2 = findCheckEndP1.replace('<p>[/checklist]</p>', '</div>');
 	
-	encodedContent = btoa(findCheckEndP2);
-	cleanedContent = encodedContent.replace(/ /g, '+');
-	//Working on getting [checkmark] box to work right. Check back in the morning
+	results = {pageName:pageName, Title:Title, subTitle:subTitle, pageContent: findCheckEndP2};
+	data = {payload:JSON.stringify(results)};
+	ajax('addPage', data, 'POST', function(obj){successIndicator(); loadOut("Add Page"); console.log(obj);});
 	
-	results = 'pageName='+pageName+'&Title='+encodedTitle+'&subTitle='+subTitle+'&pageContent='+cleanedContent;
-	postURL = 'http://'+document.location.hostname+'/ajax/postPage.php?'+results;
-	$.post('http://'+document.location.hostname+'/ajax/postPage.php?'+results, "json").success(function() {successIndicator();loadOut('Add Page');});
+	//$.post('http://'+document.location.hostname+'/ajax/postPage.php?pageName='+pageName, results).success(function(obj) {console.log(obj);successIndicator();loadOut('Add Page');});
+	
+	//$.post('http://'+document.location.hostname+'/ajax/postPage.php?', "json", function(){}).success(function() {successIndicator();loadOut('Add Page');});
 	wysiwygEnd();
 }
 
@@ -414,10 +429,10 @@ function submitSettings(configType){
 	progressIndicator();
 	
 	var data = {};
-	
 	var formInputText = $('#'+configType+' input[type="text"]').each(function(){data[$(this).attr('name')]=$(this).val();});
+	console.log(data);
 	//test for checkbox
-	var formCheckbox = $('#'+configType+' input[type="checkbox"').each(function(){data[$(this).attr('name')]=$(this).checked;});
+	//var formCheckbox = $('#'+configType+' input[type="checkbox"').each(function(){data[$(this).attr('name')]=$(this).checked;});
 	
 	//var formTextArea = $('.'+name+'Wrap input').each(function(){data[$(this).attr('name')]=$(this).val();});
 	//var formSelect = $('.'+name+'Wrap input').each();
@@ -484,5 +499,51 @@ function popWin(current, height, width){
 			$('.maskClose').bind('mousedown',function(){hideMask();});
 		}
 	});
+	
+}
+
+function ajax(plugin, data, type, success, context){
+	$.ajax({
+	url:"plugins/"+plugin+"/edit.php",
+		data: data,
+		type:  type,
+		statusCode: {
+		404: function() {
+				alert('page not found');
+			}
+		},
+		success: success
+	});
+}
+
+function ajaxPost(plugin, data, type, success, context){
+	$.ajax({
+	url:"plugins/"+plugin+"/edit.php",
+		data: data,
+		type: "POST",
+		statusCode: {
+		404: function() {
+				alert('page not found');
+			}
+		},
+		success: success
+	});
+}
+
+function runAjax(obj){
+	if(obj === null || obj === undefined){
+		plugin = 'listPages';
+		data = 'json';
+		type = 'GET';
+		ajax(plugin, data, type);
+	}
+	else {
+		i = 0;
+		$.each(obj,function(obj){
+			console.log(obj[i]['Title']);
+			i++;
+		});
+		
+	}
 	
 }

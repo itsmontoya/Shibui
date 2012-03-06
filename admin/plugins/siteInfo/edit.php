@@ -1,6 +1,6 @@
-<div class="basicSettingsWrap">
-	<script type="text/javascript">fillMaskContainer('basicSettings')</script>
-	<form id="basicSettings">
+<div class="siteInfoWrap">
+	<script type="text/javascript">fillMaskContainer('siteInfo');</script>
+	<form id="siteInfo">
 		<h2>Basic Settings</h2>
 		<label for="companyName">Company Name</label>
 		<input type="text" name="Company_Name">
@@ -10,6 +10,6 @@
 		<input type="text" name="City">
 		<label for="state">State</label>
 		<input type="text" name="State">
-		<div class="btnDiv" onclick="submitSettings('basicSettings');">Save</div>
+		<div class="btnDiv" onclick="submitSettings('siteInfo');">Save</div>
 	</form>
 </div>

@@ -1,4 +1,4 @@
-<?php global $dataArray; $data = $dataArray['basicSettings'];?>
+<?php global $dataArray; $data = $dataArray['siteInfo'];?>
 
 <ul>
 	<li>&copy;2012 <?php echo $data['Company_Name']; ?></li>

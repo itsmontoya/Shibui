@@ -1,5 +1,13 @@
 <?php
 
+$docRoot = getenv("DOCUMENT_ROOT");
+$docRoot = rtrim($docRoot, '/');
+$imagePath = $docRoot.'/images';
+$tmpPath = $docRoot.'/images/tmp';
+
+if(!file_exists($imagePath)) mkdir($imagePath);
+if(!file_exists($tmpPath)) mkdir($tmpPath);
+
 if(!isset($_FILES['imageUpload']))
 	die("I need a file please");
 	
@@ -7,9 +15,9 @@ $err = $_FILES['imageUpload']['error'];
 
 if($err == UPLOAD_ERR_OK)
 {
-	$pngTemp = $_SERVER['DOCUMENT_ROOT'] . '/images/tmp/logo.png';
-	$jpgTemp = $_SERVER['DOCUMENT_ROOT'] . '/images/tmp/logo.jpg';
-	$gifTemp = $_SERVER['DOCUMENT_ROOT'] . '/images/tmp/logo.gif';
+	$pngTemp = $docRoot . '/images/tmp/logo.png';
+	$jpgTemp = $docRoot . '/images/tmp/logo.jpg';
+	$gifTemp = $docRoot . '/images/tmp/logo.gif';
 	
 	if (file_exists($pngTemp)) {
 		unlink($pngTemp);
@@ -25,7 +33,7 @@ if($err == UPLOAD_ERR_OK)
 	$ext = strtolower(pathinfo($_FILES['imageUpload']['name'], PATHINFO_EXTENSION));
 	$fn = md5($_FILES['imageUpload']['name'] . time());
 	$final_filename = 'logo.' . $ext;
-	move_uploaded_file($_FILES['imageUpload']['tmp_name'],$_SERVER['DOCUMENT_ROOT'] . '/images/tmp/temp.' . $ext);
+	move_uploaded_file($_FILES['imageUpload']['tmp_name'],$docRoot . '/images/tmp/temp.' . $ext);
 	
 	/*
 	$pngLogo = $_SERVER['DOCUMENT_ROOT'] . '/images/logo.png';
@@ -47,7 +55,7 @@ if($err == UPLOAD_ERR_OK)
 	*/
 }
 
-	header("location:http://dev.itsmontoya.com/admin/settings/logoManager/uploadConfirmation.php?success=success");
+	header("location:".$_SERVER['HTTP REFERER']."uploadConfirmation.php?success=success");
 	exit(0);
 
 

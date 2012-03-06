@@ -14,20 +14,17 @@ refreshFunction(current);
 }
 
 function contentPull(current) {
+console.log(current);
 	$.getJSON('http://'+document.location.hostname+'/ajax/'+current+'.json', function(data) {
-		$.each(data, function(key, val) {
-			entry = key;
-			Title = window.atob(val['Title']);
-			Post = val['Post'];
-			decodedPost = window.atob(val['Post']);
-			//validatedPost = decodedPost.replace(/<\/div><\/p><p>/g,'<\/div><p>');
-			validatedPost = decodedPost.replace(/\+/g,' ');
-			cleanedPost = validatedPost.replace(/<p><\/p>/g,'');
-			$('.content').append('<div class="page transition">'+cleanedPost+'</div><div class="widgetContainer transition"><form><h2>Get Your</h2><h1>FREE</h1><h2>Estimate!</h2><label for="name">Name:</label><input type="text" name="name"><label for="phone">Phone:</label><input type="text" name="phone"><label for="email">Email:</label><input type="text" name="email"><div class="formSubmit"><p>Contact Us<p></div><small>Your information is confidential</small></form><div class="associations"><h2>Our Associations &amp; Accreditations</h2></div></div>');
-			$('.'+current+'Li').addClass('active');
-			var childHeight = $('.content').children().outerHeight();
-			$('.content').css('height',childHeight);
-		});
+		console.log(data);
+		Title = data['Title'];
+		pageContent = data['pageContent'];
+		console.log(pageContent);
+		cleanedPost = pageContent.replace(/<p><\/p>/g,'');
+		$('.content').append('<div class="page transition">'+cleanedPost+'</div><div class="widgetContainer transition"><form><h2>Get Your</h2><h1>FREE</h1><h2>Estimate!</h2><label for="name">Name:</label><input type="text" name="name"><label for="phone">Phone:</label><input type="text" name="phone"><label for="email">Email:</label><input type="text" name="email"><div class="formSubmit"><p>Contact Us<p></div><small>Your information is confidential</small></form><div class="associations"><h2>Our Associations &amp; Accreditations</h2></div></div>');
+		$('.'+current+'Li').addClass('active');
+		var childHeight = $('.content').children().outerHeight();
+		$('.content').css('height',childHeight);
 	}, "json").success(function() {setTimeout(function(){$('.content').removeClass('fade');}, 40)});
 }
 
@@ -37,7 +34,7 @@ function heightAdjustment() {
 }
 
 function navLoad(){
-	$.getJSON('http://'+document.location.hostname+'/ajax/navigation.json', function(data) {
+	$.getJSON('http://'+document.location.hostname+'/admin/settings/navigation.json', function(data) {
 		$.each(data, function(key, val) {
 			entry = key;
 			Title = window.atob(val['Title']);

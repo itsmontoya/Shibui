@@ -23,7 +23,7 @@
 					if(preg_match('#^(.+?)(_t)?\.(jpg|gif|png)#i', $image)){
 						$newImage = preg_replace('%(.)*(/)%', '', $image);
 						$newImageURL = 'http://'.$_SERVER['SERVER_NAME'].'/images/gallery/'.$newImage;
-						echo '<div class="galleryDisplay"><img src="'.$newImageURL.'" /><input type="button" class="transition addBtn" value="Add" onclick="parent.SGMAddImage(\''.$newImageURL.'\');parent.hideMask();self.location.href=\'clearGM.php\'"/><input type="button" class="transition delBtn" value="Del" onclick="parent.hideMask();self.location.href=\'deleteGalleryImage.php?image='.$newImage.'\'"/></div>' ;
+						echo '<div class="galleryDisplay"><img src="'.$newImageURL.'" /><div class="inputMask addInputMask"></div><div class="inputMask delInputMask"></div><input type="button" class="transition addBtn" value="Add" onclick="parent.SGMAddImage(\''.$newImageURL.'\');parent.hideMask();self.location.href=\'clearGM.php\'"/><input type="button" class="transition delBtn" value="Del" onclick="parent.hideMask();self.location.href=\'deleteGalleryImage.php?image='.$newImage.'\'"/></div>' ;
 					}
 				}
 			}

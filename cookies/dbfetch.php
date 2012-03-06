@@ -27,7 +27,6 @@ else
 		/*echo '<p>';
 		var_dump($row);
 		echo '</p>';*/
-		
 		if($row['password'] == $processedPass) {
 			$_SESSION['user_name'] = $row['user_name'];
 			header("location:".$_SERVER['HTTP REFERER']."/admin/index.php");

@@ -1,28 +1,38 @@
 <?php
 	global $dataArray;
 	global $page;
+	
 	$navigation = $dataArray['navigation'];
+	$currentPage = pathinfo($_SERVER["REQUEST_URI"], PATHINFO_FILENAME);
+	
+	if($currentPage == '') $currentPage = $page;
 	
 	echo '<ul id="navUL">';
-	
-	foreach($navigation as $object) {
-		$pageName = str_replace("'", "", $object['pageName']);
-		$quotedPageName = $object['pageName'];
-		$Title = $object['Title'];
-		$decodedTitle = base64_decode($Title);
-		
-		if($pageName == 'Home' && '/' == $_SERVER["REQUEST_URI"]){
-			echo '<li class="'.$pageName.'Li active"><a href="'.$pageName.'" onClick="loadOut('.$quotedPageName.')">'.$decodedTitle.'</a></li>';
-		}
-		else{
-			if($pageName == $page){
-				echo '<li class="'.$pageName.'Li active"><a href="'.$pageName.'" onClick="loadOut('.$quotedPageName.')">'.$decodedTitle.'</a></li>';
+		foreach ($navigation as $item){
+			if($item['pageName'] != $currentPage){
+				echo '<li class="'.$item['pageName'].'Li"><a href="'.$item['pageName'].'" onClick="loadOut(\''.$item['pageName'].'\')">'.$item['Title'].'</a>';
+				if(isset($item['subOne'])){
+					echo '<ul>';
+					foreach ($item['subOne'] as $subItem) {
+						echo '<li>';
+						echo '<a href="'.$subItem['pageName'].'" onClick="loadOut(\''.$subItem['pageName'].'\')">'.$subItem['Title'].'</a>';
+						echo '</li>';
+					}
+					echo '</ul>';
+				}
+				echo '</li>';
 			}
-			else{
-			echo '<li class="'.$pageName.'Li"><a href="'.$pageName.'" onClick="loadOut('.$quotedPageName.')">'.$decodedTitle.'</a></li>';
+			else {
+				echo '<li class="'.$item['pageName'].'Li active"><a href="'.$item['pageName'].'" onClick="loadOut(\''.$item['pageName'].'\')">'.$item['Title'].'</a>';
+				if(isset($item['subOne'])){
+					echo '<ul>';
+					foreach ($item['subOne'] as $subItem) {
+						echo '<li><a href="'.$subItem['pageName'].'" onClick="loadOut(\''.$subItem['pageName'].'\')">'.$subItem['Title'].'</a></li>';
+					}
+					echo '</ul>';
+				}
+				echo '</li>';
 			}
 		}
-	}
-	
 	echo '</ul>';
 ?>
